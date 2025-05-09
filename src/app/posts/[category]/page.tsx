@@ -42,6 +42,9 @@ const blogPosts  = [
 export default async function posts({params}: { params: { category: string } }) {
   const queryParams = await params;
   const category = queryParams.category;
+  if(category === "error") {
+    throw new Error('Category not found');
+  }
   console.log(category);
   
   return (
